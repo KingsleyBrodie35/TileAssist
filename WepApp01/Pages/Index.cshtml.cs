@@ -1,20 +1,24 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using WepApp01.Models;
 
 namespace WepApp01.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
-
-        public IndexModel(ILogger<IndexModel> logger)
+        public NTree home = new NTree("home");
+        //consturctor
+        public IndexModel()
         {
-            _logger = logger;
+            
         }
 
         public void OnGet()
         {
-
+            //append children
+            home.AddChild("CTDocumentation");
+            home.AddChild("Product Documentation");
+            home.AddChild("Calculators");
         }
     }
 }
