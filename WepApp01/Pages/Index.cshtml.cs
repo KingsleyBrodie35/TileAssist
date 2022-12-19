@@ -6,7 +6,7 @@ namespace WepApp01.Pages
 {
     public class IndexModel : PageModel
     {
-        public NTree home = new NTree("home");
+        public DirTree home = new DirTree("home");
         //consturctor
         public IndexModel()
         {
@@ -15,10 +15,7 @@ namespace WepApp01.Pages
 
         public void OnGet()
         {
-            //append children
-            home.AddChild("CTDocumentation");
-            home.AddChild("Product Documentation");
-            home.AddChild("Calculators");
         }
+
     }
 }

@@ -2,9 +2,10 @@
 @model IndexModel
 @{
     ViewData["Title"] = "Home";
-    Layout = "";
 }
-
-<div class="text-center">
-    <p>@Model.home.Name</p>
+<div>
+    <nav id="navigation">
+        <button onclick="directoryDown()">home</button>
+    </nav>
 </div>
+
