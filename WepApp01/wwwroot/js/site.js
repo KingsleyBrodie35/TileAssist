@@ -1,4 +1,31 @@
-﻿class DirTree {
+﻿class Queue {
+    constructor() {
+        this.elements = {};
+        this.head = 0;
+        this.tail = 0;
+    }
+    enqueue(element) {
+        this.elements[this.tail] = element;
+        this.tail++;
+    }
+    dequeue() {
+        const item = this.elements[this.head];
+        delete this.elements[this.head];
+        this.head++;
+        return item;
+    }
+    peek() {
+        return this.elements[this.head];
+    }
+    get length() {
+        return this.tail - this.head;
+    }
+    get isEmpty() {
+        return this.length === 0;
+    }
+}
+
+class DirTree {
     constructor(name) {
         this.name = name
         this.children = new Array();
@@ -12,24 +39,70 @@
     }
     //tree traversal
     directoryDown() {
-        return children
+        return this.children
+    }
+
+    breadthFirstSearch(n) {
+
+        let visited = new Queue()
+        let queue = new Queue()
+
+        //append home to queue
+        visited.enqueue(HOME)
+        queue.enqueue(HOME)
+
+        while (!queue.isEmpty) {
+            // check if front of queue equals parameter
+            if (queue.peek().name == n) {
+                return queue.peek().directoryDown()
+            }
+            //pop off visited node 
+            let s = queue.dequeue()
+            
+            //add children nodes
+            if (s.children.length != 0) {
+                for (let i = 0; i < s.children.length; i++) {
+                    visited.enqueue(s.children[i])
+                    queue.enqueue(s.children[i])
+                }
+            }
+        }
     }
 }
 
-function createDirectory() {
-    home.createChild("product documentation")
-    home.createChild("clearTile documentation")
+
+
+function createDirectory(dirTree) {
+    dirTree.createChild("product documentation")
+    dirTree.createChild("clearTile documentation")
     let calculators = new DirTree("calculators")
     calculators.createChild("grout calculator")
     calculators.createChild("pool coping calculator")
-    return home
+    dirTree.addChild(calculators)
+    return dirTree
 }
 
-function directoryDown() {
+function directoryDown(n) {
+    let div = document.getElementById('navigation')
+    div.innerHTML = ""
+
+    let level = HOME.breadthFirstSearch(n)
+
+    for (let i = 0; i < level.length; i++) {
+        let btn = document.createElement("button")
+        btn.innerText = level[i].name
+        btn.addEventListener("click", function (e) {
+            directoryDown(btn.innerText)
+        })
+        div.appendChild(btn)
+    }
 
 }
 
-HOME = new DirTree("home")
-createDirectory()
+let HOME = new DirTree("home")
+HOME = createDirectory(HOME)
+let Q = new Queue
+Q.enqueue(HOME)
 
 //can we use a queue to keep track of where we are nested in directorytree
+//can we use breadth-first search to find the name of the button clicked?e
