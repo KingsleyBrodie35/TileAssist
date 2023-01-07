@@ -71,7 +71,7 @@ class DirTree {
 }
 
 
-
+//add nodes (pages) to working dirTree here
 function createDirectory(dirTree) {
     dirTree.createChild("product documentation")
     dirTree.createChild("clearTile documentation")
@@ -85,18 +85,28 @@ function createDirectory(dirTree) {
 function directoryDown(n) {
     let div = document.getElementById('navigation')
     div.innerHTML = ""
-
+    //find nested directory level
     let level = HOME.breadthFirstSearch(n)
-
+    //display level
     for (let i = 0; i < level.length; i++) {
-        let btn = document.createElement("button")
-        btn.innerText = level[i].name
-        btn.addEventListener("click", function (e) {
-            directoryDown(btn.innerText)
-        })
-        div.appendChild(btn)
+        //if leaf create link input
+        if (level[i].children.length == 0) {
+            let tag = document.createElement("a")
+            var tagTxt = document.createTextNode(level[i].name)
+            tag.appendChild(tagTxt)
+            tag.href = `./${level[i].name}`
+            tag.className = 'dirTreeChild'
+            div.appendChild(tag)
+        } else {
+            let btn = document.createElement("button")
+            btn.innerText = level[i].name
+            btn.addEventListener("click", function (e) {
+                directoryDown(btn.innerText)
+            })
+            btn.className = 'dirTreeChild'
+            div.appendChild(btn)
+        }
     }
-
 }
 
 let HOME = new DirTree("home")
@@ -104,5 +114,3 @@ HOME = createDirectory(HOME)
 let Q = new Queue
 Q.enqueue(HOME)
 
-//can we use a queue to keep track of where we are nested in directorytree
-//can we use breadth-first search to find the name of the button clicked?e

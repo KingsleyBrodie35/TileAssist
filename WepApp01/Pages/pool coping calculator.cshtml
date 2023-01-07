@@ -1,0 +1,25 @@
+﻿@page
+@model WepApp01.Pages.pool_coping_calculatorModel
+@{
+}
+
+<form method="post">
+    <p>
+        <label for="perimeter">Perimeter of pool</label>
+        <input type="text" id="perimter" name="perimeter" placeholder="please enter in Lm ex. 15.5" />
+    </p>
+    <p>
+        <label for="corners">Total corners</label>
+        <input type="text" id="corners" name="corners"/>
+    </p>
+    <p>
+        <label for="copingLength">Coping Length</label>
+        <input type="text" id="copingLength" name="copingLength" placeholder="please enter in mm measurements ex. 600" />
+    </p>
+    <p> 
+        <input type="submit"/>
+    </p>
+    <p>
+            @Model.totalCopers total copers
+    </p>
+</form>
