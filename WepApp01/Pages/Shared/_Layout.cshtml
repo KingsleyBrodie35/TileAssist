@@ -5,10 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - WepApp01</title>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Oswald&display=swap" rel="stylesheet">
+
 </head>
 <body>
     <nav>
         <a href="./index"><img src="./images/logo.jpg" class="img"/></a>
+        <h1 class="pageHeading">@ViewData["pageName"]</h1>
     </nav>
     
     <div class="container">

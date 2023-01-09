@@ -1,25 +1,30 @@
 ﻿@page
 @model WepApp01.Pages.pool_coping_calculatorModel
 @{
+    ViewData["pageName"] = "Pool Coping Calculator";
 }
 
 <form method="post">
     <p>
         <label for="perimeter">Perimeter of pool</label>
-        <input type="text" id="perimter" name="perimeter" placeholder="please enter in Lm ex. 15.5" />
+        <input type="text" id="perimeter" name="perimeter" placeholder="numbers only" pattern="[+-]?([0-9]*[.])?[0-9]+"/>
     </p>
     <p>
         <label for="corners">Total corners</label>
-        <input type="text" id="corners" name="corners"/>
+        <input type="number" id="corners" name="corners"/>
     </p>
     <p>
         <label for="copingLength">Coping Length</label>
-        <input type="text" id="copingLength" name="copingLength" placeholder="please enter in mm measurements ex. 600" />
+        <input type="number" id="copingLength" name="copingLength" placeholder="please enter in mm measurements ex.600" />
     </p>
     <p> 
         <input type="submit"/>
     </p>
-    <p>
-            @Model.totalCopers total copers
-    </p>
+    @{
+        if (Model.totalCopers != 0)
+        {
+          <p>@Model.totalCopers total Coping Tiles</p>  
+        }
+    }
+    
 </form>

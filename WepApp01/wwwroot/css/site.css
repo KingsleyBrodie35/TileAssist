@@ -2,6 +2,14 @@ html {
   font-size: 14px;
 }
 
+h1 {
+    font-family: 'Oswald', sans-serif;
+}
+
+p {
+    font-family: 'Open Sans', sans-serif;
+}
+
 @media (min-width: 768px) {
   html {
     font-size: 16px;
@@ -85,14 +93,22 @@ footer {
     height: 100%;
 }
 nav {
+    position: relative;
     margin: 20px;
+    display: flex;
+    flex-direction: row;
 }
+.pageHeading {
+    position: absolute;
+    right: 0;
+}
+
 .navigation {
    display: flex;
    flex-direction: column;
    position: absolute;
    top: 10%;
-   left: 10%;
+   
 }
 
 .img {

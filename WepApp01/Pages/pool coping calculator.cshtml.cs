@@ -3,21 +3,19 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace WepApp01.Pages
 {
+    [BindProperties]
     public class pool_coping_calculatorModel : PageModel
     {
         //fields
-        [BindProperty]
-        float perimeter { get; set; }
-        [BindProperty]
-        int corners { get; set; }
-        [BindProperty]
-        float copingLength { get; set; }
-
+        public int perimeter { get; set; }
+        public int corners { get; set; }
+        public float copingLength { get; set; }
         public int totalCopers { get; set; }
 
 
         public void OnGet()
         {
+           
         }
 
         public IActionResult OnPost()
