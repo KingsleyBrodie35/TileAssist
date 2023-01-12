@@ -44,32 +44,29 @@ class DirTree {
     //return level below parameter node
     breadthFirstSearch(n) {
 
-        let visited = new Queue()
-        let queue = new Queue()
-
-        //append home to queue
-        visited.enqueue(HOME)
-        queue.enqueue(HOME)
-
-        while (!queue.isEmpty) {
+        while (!QUEUE.isEmpty) {
             // check if front of queue equals parameter
-            if (queue.peek().name == n) {
-                return queue.peek().directoryDown()
+            if (QUEUE.peek().name == n) {
+                return QUEUE.peek().directoryDown()
             }
             
             //pop off visited node 
-            let s = queue.dequeue()
+            let s = QUEUE.dequeue()
             
             //add children nodes
             if (s.children.length != 0) {
                 for (let i = 0; i < s.children.length; i++) {
-                    visited.enqueue(s.children[i])
-                    queue.enqueue(s.children[i])
+                    VISITED.enqueue(s.children[i])
+                    QUEUE.enqueue(s.children[i])
                 }
             }
         }
     }
-    
+    //could we give an extra field of level order for each dirTree and iterate to make sure we are on the right lvl
+    directoryUp() {
+        QUEUE.dequeue()
+        return QUEUE.peek()
+    }
 
 }
 
@@ -112,14 +109,37 @@ function directoryDown(n) {
     }
 }
 
-function directoryUp(n) {
+function directoryUp() {
     let div = document.getElementById('navigation')
     div.innerHTML = ""
     //find nested directory level
-    let level = HOME.breadthFirstSearch(n, "up")
+    let level = HOME.directoryUp()
+    //display level
+    for (let i = 0; i < level.length; i++) {
+        //if leaf create link input
+        if (level[i].children.length == 0) {
+            let tag = document.createElement("a")
+            var tagTxt = document.createTextNode(level[i].name)
+            tag.appendChild(tagTxt)
+            tag.href = `./${level[i].name}`
+            tag.className = 'dirTreeChild'
+            div.appendChild(tag)
+        } else {
+            let btn = document.createElement("button")
+            btn.innerText = level[i].name
+            btn.addEventListener("click", function (e) {
+                directoryDown(btn.innerText)
+            })
+            btn.className = 'dirTreeChild'
+            div.appendChild(btn)
+        }
+    }
 }
 
 let HOME = new DirTree("home")
 HOME = createDirectory(HOME)
-
-
+let VISITED = new Queue()
+let QUEUE = new Queue()
+//append home to queue
+VISITED.enqueue(HOME)
+QUEUE.enqueue(HOME)
