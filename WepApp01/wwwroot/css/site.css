@@ -114,3 +114,12 @@ nav {
 .img {
     width: 150px
 }
+
+/*forms*/
+input {
+    margin: 10px;
+    padding: 5px;
+}
+form.p {
+
+}

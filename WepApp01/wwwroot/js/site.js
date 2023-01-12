@@ -41,7 +41,7 @@ class DirTree {
     directoryDown() {
         return this.children
     }
-
+    //return level below parameter node
     breadthFirstSearch(n) {
 
         let visited = new Queue()
@@ -56,6 +56,7 @@ class DirTree {
             if (queue.peek().name == n) {
                 return queue.peek().directoryDown()
             }
+            
             //pop off visited node 
             let s = queue.dequeue()
             
@@ -68,6 +69,8 @@ class DirTree {
             }
         }
     }
+    
+
 }
 
 
@@ -109,8 +112,14 @@ function directoryDown(n) {
     }
 }
 
+function directoryUp(n) {
+    let div = document.getElementById('navigation')
+    div.innerHTML = ""
+    //find nested directory level
+    let level = HOME.breadthFirstSearch(n, "up")
+}
+
 let HOME = new DirTree("home")
 HOME = createDirectory(HOME)
-let Q = new Queue
-Q.enqueue(HOME)
+
 
