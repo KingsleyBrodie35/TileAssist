@@ -62,19 +62,19 @@ class DirTree {
             }
         }
     }
-    //could we give an extra field of level order for each dirTree and iterate to make sure we are on the right lvl
-    directoryUp() {
-        QUEUE.dequeue()
-        return QUEUE.peek()
-    }
-
 }
 
 
 //add nodes (pages) to working dirTree here
 function createDirectory(dirTree) {
     dirTree.createChild("product documentation")
-    dirTree.createChild("clearTile documentation")
+    //dirTree.createChild("clearTile documentation")
+
+
+    let cleartileDocs = new DirTree("clearTile documentation")
+    cleartileDocs.createChild("importing items to clearTile from a csv")
+    dirTree.addChild(cleartileDocs)
+
     let calculators = new DirTree("calculators")
     calculators.createChild("grout calculator")
     calculators.createChild("pool coping calculator")

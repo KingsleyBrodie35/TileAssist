@@ -1,0 +1,27 @@
+﻿@page
+@model WepApp01.Pages.importing_items_to_clearTile_from_a_csvModel
+@{
+    ViewData["pageName"] = "Importing inventory into clearTile from csv";
+}
+<div class="docDivParent">
+    <div class="docDivChild">
+        <h3>1. File Configuration</h3>
+        <p>Before we can import inventory, me must make sure that the file we are wishing to use is compatible with the clearTile Macro INEXINGO. If we open the macro in ClearTile we can see each of the fields comprising an inventory item.</p>
+        <img src="~/images/clearTile00.jpg" />
+        <p>Each field you are importing should match the same spelling as the checkbox field in clearTile, also make sure that the headers of each column are entered in row 1.</p>
+        <img src="~/images/ClearTile01.jpg" class="img01" />
+        <h3>1.1 File Extension</h3>
+        <p>Next we need to make sure that the file extension is csv, in excel click 'file, Save As, select the location and name you wish to save & make sure you save the file as a csv</p>
+        <img src="~/images/clearTile02.jpg" />
+        <h3>2. Importing Items</h3>
+        <p>Open ClearTile and type the macro 'INEXINGO'</p>
+        <p>Set 'do' to 'Import' and 'format' to 'csv'</p>
+        <img src="~/images/clearTile03.jpg" />
+        <p>Next click all the checkboxes of fields that you are importing.</p>
+        <p>Enter the location of where the file is saved.</p>
+        <p>Clicking the validate button will verify if there are any errors in the file. If there are no errors, then press okay and all items will be added to inventory.</p>
+    </div>
+</div>
+
+
+

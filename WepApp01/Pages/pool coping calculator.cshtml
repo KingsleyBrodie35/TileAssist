@@ -19,12 +19,11 @@
     </p>
     <p> 
         <input type="submit"/>
-    </p>
-    @{
-        if (Model.totalCopers != 0)
-        {
-          <p>@Model.totalCopers total Coping Tiles</p>  
-        }
-    }
-    
+    </p>  
 </form>
+@{
+    if (Model.totalCopers != 0)
+    {
+        <p>@Model.totalCopers total Coping Tiles</p>  
+    }
+}
