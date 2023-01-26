@@ -67,9 +67,10 @@ class DirTree {
 
 //add nodes (pages) to working dirTree here
 function createDirectory(dirTree) {
-    dirTree.createChild("product documentation")
-    //dirTree.createChild("clearTile documentation")
 
+    let productDocs = new DirTree("product documentation") 
+    productDocs.createChild("Travertine being used around pools")
+    dirTree.addChild(productDocs)
 
     let cleartileDocs = new DirTree("clearTile documentation")
     cleartileDocs.createChild("importing items to clearTile from a csv")
@@ -79,6 +80,7 @@ function createDirectory(dirTree) {
     calculators.createChild("grout calculator")
     calculators.createChild("pool coping calculator")
     dirTree.addChild(calculators)
+    
     return dirTree
 }
 
