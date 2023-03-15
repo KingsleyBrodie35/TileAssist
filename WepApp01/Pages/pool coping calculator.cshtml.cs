@@ -20,7 +20,7 @@ namespace WepApp01.Pages
 
         public IActionResult OnPost()
         {
-            totalCopers = (int) (Math.Round(perimeter * (copingLength / 1000) + corners));
+            totalCopers = (int) (Math.Round(perimeter * (1 / copingLength * 1000) + corners));
             return Page();
         }
     }
